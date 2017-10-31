@@ -2,28 +2,31 @@ package ru.stqa.pft.sandbox;
 
 public class MyProgram {
 
- public static void main(String[] args) {
-   hello("world");
-   hello("user");
-   hello("Evgeniy");
+  public static void main(String[] args) {
+    hello("world");
+    hello("user");
+    hello("Evgeniy");
 
-   double l = 7;
-   System.out.println("Площадь квадрата со стороной " + l + " = " + area(l));
+    /*Задание 2 Начало*/
+    Square s = new Square(7);
+    Rectangle r = new Rectangle(4, 7);
 
-   double a = 4;
-   double b = 7;
-   System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a,b));
- }
+    Point p1 = new Point(17.0,1.5);
+    Point p2 = new Point(4.5,7.7);
+    System.out.println("Расстояние междк точками p1 и p2 = "+p1.distance(p1,p2));
+    /*Задание 2 Конец*/
 
- public static void hello(String somebody){
-   System.out.println("Hello, " + somebody + "!");
- }
 
- public static double area(double len){
-   return len + len;
- }
+    System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
+    System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 
- public static double area(double a, double b){
-   return a * b;
- }
+  }
+
+  public static void hello(String somebody) {
+    System.out.println("Hello, " + somebody + "!");
+  }
+
+
 }
+
+
