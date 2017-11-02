@@ -13,7 +13,7 @@ public class MyProgram {
 
     Point p1 = new Point(17.0,1.5);
     Point p2 = new Point(4.5,7.7);
-    System.out.println("Расстояние между точками p1 и p2 = "+p1.distance(p1,p2));
+    System.out.println("Расстояние между точками p1 и p2 = "+p1.distance(p2));
     /*Задание 2 Конец*/
 
 
