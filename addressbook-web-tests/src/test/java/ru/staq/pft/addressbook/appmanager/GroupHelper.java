@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.staq.pft.addressbook.model.GroupDate;
 
-public class GroupHelper {
+public class GroupHelper extends HelperBase {
  private FirefoxDriver wd;
 
   public GroupHelper(FirefoxDriver wd) {
@@ -12,34 +12,38 @@ public class GroupHelper {
   }
 
   public void returnToGroupPage() {
-    wd.findElement(By.linkText("group page")).click();
+    click(By.linkText("group page"));
   }
 
   public void submitGroupCreation() {
-    wd.findElement(By.name("submit")).click();
+    click(By.name("submit"));
+  }
+
+  private void click(By locator) {
+    wd.findElement(locator).click();
   }
 
   public void fillGroupForm(GroupDate groupDate) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(groupDate.getName());
-    wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(groupDate.getHeader());
-    wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(groupDate.getFooter());
+    type(By.name("group_name"), groupDate.getName());
+    type(By.name("group_header"), groupDate.getHeader());
+    type(By.name("group_footer"), groupDate.getFooter());
+  }
+
+  private void type(By locator, String text) {
+    click(locator);
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
   }
 
   public void initGroupCreation() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
+    click(By.xpath("//div[@id='content']/form/input[4]"));
   }
 
   public void deleteSelectedGroups() {
-      wd.findElement(By.name("delete")).click();
+    click(By.name("delete"));
   }
 
   public void selectGroup() {
-      wd.findElement(By.name("selected[]")).click();
+    click(By.name("selected[]"));
   }
 }
