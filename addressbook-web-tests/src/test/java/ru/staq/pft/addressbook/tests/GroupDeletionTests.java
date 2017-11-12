@@ -1,4 +1,4 @@
-package ru.staq.pft.addressbook;
+package ru.staq.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
 
