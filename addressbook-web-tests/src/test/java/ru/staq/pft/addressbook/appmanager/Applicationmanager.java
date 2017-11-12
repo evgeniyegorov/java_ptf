@@ -11,9 +11,10 @@ public class ApplicationManager {
 
   FirefoxDriver wd;
 
-  private  AddNewHelper addNewHelper;
+  private SessionHelper sessionHelper;
+  private AddNewHelper addNewHelper;
   private NavigationHelper navigationHelper;
-  private  GroupHelper groupHelper;
+  private GroupHelper groupHelper;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
     try {
@@ -31,26 +32,13 @@ public class ApplicationManager {
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     addNewHelper = new AddNewHelper(wd);
-    login("admin", "secret");
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.login("admin", "secret");
   }
 
-  private void login(String username, String password) {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-
-  }
 
   public void stop() {
     wd.quit();
-  }
-
-  public void gotoAddNewPage() {
-    wd.findElement(By.linkText("add new")).click();
   }
 
   public GroupHelper getGroupHelper() {
@@ -64,4 +52,5 @@ public class ApplicationManager {
   public AddNewHelper getAddNewHelper() {
     return addNewHelper;
   }
+
 }
