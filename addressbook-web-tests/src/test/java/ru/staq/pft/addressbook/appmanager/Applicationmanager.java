@@ -1,7 +1,6 @@
 package ru.staq.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
+
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import ru.staq.pft.addressbook.model.AddNewData;
@@ -12,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class Applicationmanager {
   FirefoxDriver wd;
 
+<<<<<<< HEAD
   public static boolean isAlertPresent(FirefoxDriver wd) {
     try {
       wd.switchTo().alert();
@@ -20,6 +20,14 @@ public class Applicationmanager {
       return false;
     }
   }
+=======
+  private SessionHelper sessionHelper;
+  private AddNewHelper addNewHelper;
+  private NavigationHelper navigationHelper;
+  private GroupHelper groupHelper;
+
+
+>>>>>>> parent of 3fdd1a0... Revert "Тесты не запускаются"
 
   public void init() {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
