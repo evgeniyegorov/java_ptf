@@ -12,14 +12,6 @@ import java.util.concurrent.TimeUnit;
 public class Applicationmanager {
   FirefoxDriver wd;
 
-<<<<<<< HEAD
-=======
-  private SessionHelper sessionHelper;
-  private AddNewHelper addNewHelper;
-  private NavigationHelper navigationHelper;
-  private GroupHelper groupHelper;
-
->>>>>>> parent of fbb7dc1... Revert "Revert "Тесты не запускаются""
   public static boolean isAlertPresent(FirefoxDriver wd) {
     try {
       wd.switchTo().alert();
