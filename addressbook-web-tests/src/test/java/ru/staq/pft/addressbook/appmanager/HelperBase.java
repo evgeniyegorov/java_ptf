@@ -6,7 +6,11 @@ import ru.staq.pft.addressbook.model.AddNewData;
 import ru.staq.pft.addressbook.model.GroupDate;
 
 public class HelperBase {
-  FirefoxDriver wd;
+  private FirefoxDriver wd;
+
+  public HelperBase(FirefoxDriver wd) {
+    this.wd = wd;
+  }
 
   public void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
