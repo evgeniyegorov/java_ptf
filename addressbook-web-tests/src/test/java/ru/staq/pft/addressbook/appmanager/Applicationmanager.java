@@ -9,9 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Applicationmanager {
 
-  FirefoxDriver wd;
-
-  private  HelperBase helperBase;
+  private final HelperBase helperBase = new HelperBase();
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
     try {
@@ -23,34 +21,34 @@ public class Applicationmanager {
   }
 
   public void init() {
-    wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/");
-    helperBase = new HelperBase(wd);
+    helperBase.wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+    helperBase.wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    helperBase.wd.get("http://localhost/addressbook/");
+
     login("admin", "secret");
   }
 
   private void login(String username, String password) {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+    helperBase.wd.findElement(By.name("user")).click();
+    helperBase.wd.findElement(By.name("user")).clear();
+    helperBase.wd.findElement(By.name("user")).sendKeys(username);
+    helperBase.wd.findElement(By.name("pass")).click();
+    helperBase.wd.findElement(By.name("pass")).clear();
+    helperBase.wd.findElement(By.name("pass")).sendKeys(password);
+    helperBase.wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
 
   }
 
   public void gotoGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+    helperBase.wd.findElement(By.linkText("groups")).click();
   }
 
   public void stop() {
-    wd.quit();
+    helperBase.wd.quit();
   }
 
   public void gotoAddNewPage() {
-    wd.findElement(By.linkText("add new")).click();
+    helperBase.wd.findElement(By.linkText("add new")).click();
   }
 
   public HelperBase getHelperBase() {
