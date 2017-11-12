@@ -1,15 +1,15 @@
-package ru.staq.pft.addressbook.appmanager;
+package ru.staq.pft.addressbook;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.staq.pft.addressbook.model.AddNewData;
-import ru.staq.pft.addressbook.model.GroupDate;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class Applicationmanager {
+public class TestBase {
   FirefoxDriver wd;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
@@ -21,7 +21,8 @@ public class Applicationmanager {
     }
   }
 
-  public void init() {
+  @BeforeMethod
+  public void setUp() throws Exception {
     wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
@@ -40,15 +41,15 @@ public class Applicationmanager {
 
   }
 
-  public void returnToGroupPage() {
+  protected void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
 
-  public void submitGroupCreation() {
+  protected void submitGroupCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
-  public void fillGroupForm(GroupDate groupDate) {
+  protected void fillGroupForm(GroupDate groupDate) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys(groupDate.getName());
@@ -60,35 +61,36 @@ public class Applicationmanager {
     wd.findElement(By.name("group_footer")).sendKeys(groupDate.getFooter());
   }
 
-  public void initGroupCreation() {
+  protected void initGroupCreation() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
   }
 
-  public void gotoGroupPage() {
+  protected void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  public void stop() {
+  @AfterMethod
+  public void tearDown() {
     wd.quit();
   }
 
-  public void deleteSelectedGroups() {
+  protected void deleteSelectedGroups() {
       wd.findElement(By.name("delete")).click();
   }
 
-  public void selectGroup() {
+  protected void selectGroup() {
       wd.findElement(By.name("selected[]")).click();
   }
 
-  public void returnToHomePage() {
+  protected void returnToHomePage() {
     wd.findElement(By.linkText("home page")).click();
   }
 
-  public void submitAddNew() {
+  protected void submitAddNew() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  public void fillAddNewPage(AddNewData addNewData) {
+  protected void fillAddNewPage(AddNewData addNewData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys(addNewData.getFirstname());
@@ -124,7 +126,7 @@ public class Applicationmanager {
     wd.findElement(By.name("byear")).sendKeys(addNewData.getByear());
   }
 
-  public void gotoAddNewPage() {
+  protected void gotoAddNewPage() {
     wd.findElement(By.linkText("add new")).click();
   }
 }

@@ -1,4 +1,4 @@
-package ru.staq.pft.addressbook.model;
+package ru.staq.pft.addressbook;
 
 public class AddNewData {
   private final String firstname;
