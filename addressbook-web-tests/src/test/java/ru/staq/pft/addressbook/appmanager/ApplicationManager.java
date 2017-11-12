@@ -34,7 +34,6 @@ public class ApplicationManager {
     addNewHelper = new AddNewHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
-
     sessionHelper.login("admin", "secret");
   }
 
