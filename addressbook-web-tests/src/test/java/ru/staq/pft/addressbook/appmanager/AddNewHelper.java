@@ -38,4 +38,16 @@ public class AddNewHelper extends  HelperBase{
     type(By.name("byear"),addNewData.getByear());
 
   }
+
+  public void selectAddNew() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteAddNew() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void deleteOkAddNew() {
+    wd.switchTo().alert().accept();
+  }
 }
