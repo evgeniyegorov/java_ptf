@@ -50,4 +50,13 @@ public class AddNewHelper extends  HelperBase{
   public void deleteOkAddNew() {
     wd.switchTo().alert().accept();
   }
+
+  public void initAddNewModification()
+  {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void updateAddNew() {
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+  }
 }
