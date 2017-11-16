@@ -1,13 +1,14 @@
 package ru.staq.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.staq.pft.addressbook.model.AddNewData;
 
 public class AddNewHelper extends  HelperBase{
 
 
-  public AddNewHelper(FirefoxDriver wd) {
+  public AddNewHelper(WebDriver wd) {
    super(wd);
   }
 
