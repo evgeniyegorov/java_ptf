@@ -46,7 +46,7 @@ public class AddNewHelper extends  HelperBase{
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-    
+
   }
 
   public void selectAddNew() {
