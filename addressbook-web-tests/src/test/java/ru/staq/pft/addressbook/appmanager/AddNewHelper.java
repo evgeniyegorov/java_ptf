@@ -69,4 +69,14 @@ public class AddNewHelper extends  HelperBase{
   public void updateAddNew() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
+
+  public void createAddNew(AddNewData addnew, boolean b) {
+    fillAddNewPage(addnew, true);
+    submitAddNew();
+    returnToHomePage();
+  }
+
+  public boolean isThereAAddNew() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
