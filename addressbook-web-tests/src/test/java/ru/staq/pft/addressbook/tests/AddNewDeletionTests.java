@@ -25,7 +25,12 @@ public class AddNewDeletionTests extends TestBase {
     app.getAddNewHelper().deleteOkAddNew();
 
     List<AddNewData> after = app.getAddNewHelper().getAddNewList();
-    Assert.assertEquals(after, before.size() - 1);
+    Assert.assertEquals(after.size(), before.size() - 1);
+
+    before.remove(before.size() -1);
+    Assert.assertEquals(before, after);
+
+
 
   }
 }
