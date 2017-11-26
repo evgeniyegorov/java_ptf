@@ -79,4 +79,8 @@ public class AddNewHelper extends  HelperBase{
   public boolean isThereAAddNew() {
     return isElementPresent(By.name("selected[]"));
   }
+
+  public int getAddNewCaunt() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
