@@ -3,10 +3,14 @@ package ru.staq.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.staq.pft.addressbook.model.AddNewData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddNewHelper extends  HelperBase{
 
@@ -82,5 +86,25 @@ public class AddNewHelper extends  HelperBase{
 
   public int getAddNewCaunt() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<AddNewData> getAddNewList() {
+    List<AddNewData> addnews = new ArrayList<AddNewData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))
+    for(WebElement element : elements){
+      String firstname = element.getText();
+      String middlename = element.getText();
+      String lastname = element.getText();
+      String nickname = element.getText();
+      String company = element.getText();
+      String address = element.getText();
+      String mobile = element.getText();
+      String email = element.getText();
+      String byear = element.getText();
+      String group = element.getText();
+      AddNewData addnew = new AddNewData(firstname, middlename, lastname, nickname, company, address, mobile, email, byear, group);
+      addnews.add(addnew);
+    }
+    return addnews;
   }
 }
