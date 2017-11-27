@@ -45,11 +45,11 @@ public class AddNewHelper extends  HelperBase{
     }
     type(By.name("byear"),addNewData.getByear());
 
-   /* if (creation){
+    if (creation){
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(addNewData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }*/
+    }
 
   }
 
