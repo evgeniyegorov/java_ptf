@@ -45,11 +45,11 @@ public class AddNewHelper extends  HelperBase{
     }
     type(By.name("byear"),addNewData.getByear());
 
-    if (creation){
+   /* if (creation){
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(addNewData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+    }*/
 
   }
 
@@ -105,7 +105,7 @@ public class AddNewHelper extends  HelperBase{
       String byear = element.getText();
       String group = element.getText();
 
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
       AddNewData addnew = new AddNewData(id, firstname, middlename , lastname, nickname, company, address, mobile, email, byear, group);
       addnews.add(addnew);

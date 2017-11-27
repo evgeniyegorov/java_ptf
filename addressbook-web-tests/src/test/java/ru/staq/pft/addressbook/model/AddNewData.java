@@ -1,7 +1,7 @@
 package ru.staq.pft.addressbook.model;
 
 public class AddNewData {
-  private final String  id;
+  private  int  id;
   private final String firstname;
   private final String middlename;
   private final String lastname;
@@ -14,7 +14,7 @@ public class AddNewData {
   private String group;
 
   public AddNewData(String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String email, String byear, String group) {
-    this.id = null;
+    this.id = 0;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -27,7 +27,7 @@ public class AddNewData {
     this.group = group;
   }
 
-  public AddNewData(String id,String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String email, String byear, String group) {
+  public AddNewData(int id,String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String email, String byear, String group) {
     this.id = id;
     this.firstname = firstname;
     this.middlename = middlename;
@@ -41,7 +41,11 @@ public class AddNewData {
     this.group = group;
   }
 
-  public String getId() { return id; }
+  public int getId() { return id; }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getFirstname() {
     return firstname;
@@ -99,14 +103,14 @@ public class AddNewData {
 
     AddNewData that = (AddNewData) o;
 
-    if (id != null ? !id.equals(that.id) : that.id != null) return false;
+    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
   }
 
   @Override
   public int hashCode() {
-    int result = id != null ? id.hashCode() : 0;
+    int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
