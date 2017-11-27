@@ -90,19 +90,24 @@ public class AddNewHelper extends  HelperBase{
 
   public List<AddNewData> getAddNewList() {
     List<AddNewData> addnews = new ArrayList<AddNewData>();
-    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
+
     for(WebElement element : elements){
-      String firstname = element.getText();
+     // List<WebElement> cells = element.findElements(By.tagName("td"));
+      String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String middlename = element.getText();
-      String lastname = element.getText();
+      String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String nickname = element.getText();
       String company = element.getText();
-      String address = element.getText();
+      String address =  element.findElement(By.cssSelector("td:nth-child(4)")).getText();
       String mobile = element.getText();
       String email = element.getText();
       String byear = element.getText();
       String group = element.getText();
-      AddNewData addnew = new AddNewData(firstname, middlename, lastname, nickname, company, address, mobile, email, byear, group);
+
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+
+      AddNewData addnew = new AddNewData(id, firstname, middlename , lastname, nickname, company, address, mobile, email, byear, group);
       addnews.add(addnew);
     }
     return addnews;
