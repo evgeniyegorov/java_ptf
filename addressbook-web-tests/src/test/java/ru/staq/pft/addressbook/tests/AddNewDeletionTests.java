@@ -13,7 +13,9 @@ public class AddNewDeletionTests extends TestBase {
   public void ensurePreconditionsAN()  {
     if(app.addNew().list().size() == 0){
       app.goTo().addNewPage();
-      app.addNew().create(new AddNewData("Evgeniy", "Aleksandrovich", "Egorov", "egorzhekov", "DPD", "Mosqow", "8-968-982-38-07", "egorzhekov@gmail.com", "1989", "test1"), true);
+      app.addNew().create(new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
+              .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
+              .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989"), true);
     }
   }
 

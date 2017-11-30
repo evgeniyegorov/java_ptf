@@ -1,50 +1,73 @@
 package ru.staq.pft.addressbook.model;
 
 public class AddNewData {
-  private  int  id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nickname;
-  private final String company;
-  private final String address;
-  private final String mobile;
-  private final String email;
-  private final String byear;
+  private int  id = Integer.MAX_VALUE;;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+  private String nickname;
+  private String company;
+  private String address;
+  private String mobile;
+  private String email;
+  private String byear;
   private String group;
-
-  public AddNewData(String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String email, String byear, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.company = company;
-    this.address = address;
-    this.mobile = mobile;
-    this.email = email;
-    this.byear = byear;
-    this.group = group;
-  }
-
-  public AddNewData(int id,String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String email, String byear, String group) {
-    this.id = id;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.company = company;
-    this.address = address;
-    this.mobile = mobile;
-    this.email = email;
-    this.byear = byear;
-    this.group = group;
-  }
 
   public int getId() { return id; }
 
-  public void setId(int id) {
+  public AddNewData  withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public AddNewData  withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public AddNewData  withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public AddNewData  withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public AddNewData  withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public AddNewData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public AddNewData  withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public AddNewData  withMobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public AddNewData  withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public AddNewData  withByear(String byear) {
+    this.byear = byear;
+    return this;
+  }
+
+  public AddNewData  withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public String getFirstname() {

@@ -15,7 +15,9 @@ public class AddNewCreationTests extends TestBase{
 
     List<AddNewData> before = app.addNew().list();
     app.goTo().addNewPage();
-    AddNewData addnew = new AddNewData("Evgeniy", "Aleksandrovich", "Egorov", "egorzhekov", "DPD", "Mosqow", "8-968-982-38-07", "egorzhekov@gmail.com", "1989", null);
+    AddNewData addnew = new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
+            .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
+            .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
     app.addNew().create(addnew, true);
     List<AddNewData> after = app.addNew().list();
     Assert.assertEquals(after.size(), before.size() + 1);

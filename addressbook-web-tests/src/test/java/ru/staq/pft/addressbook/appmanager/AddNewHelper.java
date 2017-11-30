@@ -119,8 +119,11 @@ public class AddNewHelper extends  HelperBase{
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
-      AddNewData addnew = new AddNewData(id, firstname, middlename , lastname, nickname, company, address, mobile, email, byear, group);
-      addnews.add(addnew);
+
+      addnews.add(new AddNewData().withId(id).withFirstname(firstname)
+              .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
+              .withCompany(company).withAddress(address).withMobile(mobile).withEmail(email)
+              .withByear(byear).withGroup(group));
     }
     return addnews;
   }
