@@ -74,10 +74,22 @@ public class AddNewHelper extends  HelperBase{
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
-  public void createAddNew(AddNewData addnew, boolean b) {
+  public void create(AddNewData addnew, boolean b) {
     fillAddNewPage(addnew, true);
     submitAddNew();
     returnToHomePage();
+  }
+
+  public void modify(int index, AddNewData addnew) {
+    initAddNewModification(index);
+    fillAddNewPage(addnew, false);
+    updateAddNew();
+  }
+
+  public void delete(int index) {
+    selectAddNew(index);
+    deleteAddNew();
+    deleteOkAddNew();
   }
 
   public boolean isThereAAddNew() {
@@ -88,7 +100,7 @@ public class AddNewHelper extends  HelperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<AddNewData> getAddNewList() {
+  public List<AddNewData> list() {
     List<AddNewData> addnews = new ArrayList<AddNewData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
 
