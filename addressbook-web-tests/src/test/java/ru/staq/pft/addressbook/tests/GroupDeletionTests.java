@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.GroupDate;
 
 import java.util.List;
+import java.util.Set;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -20,13 +21,13 @@ public class GroupDeletionTests extends TestBase {
     @Test
     public void testGroupDeletion() {
 
-        List<GroupDate> before = app.group().list();
-        int index = before.size() - 1;
-        app.group().delete(index);
-        List<GroupDate> after = app.group().list();
+        Set<GroupDate> before = app.group().all();
+        GroupDate deleteGroup = before.iterator().next();
+        app.group().delete(deleteGroup);
+        Set<GroupDate> after = app.group().all();
         Assert.assertEquals(after.size(), before.size() - 1);
 
-        before.remove(index);
+        before.remove(deleteGroup);
         Assert.assertEquals(before, after);
 
 
