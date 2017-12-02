@@ -10,7 +10,9 @@ import org.testng.Assert;
 import ru.staq.pft.addressbook.model.AddNewData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AddNewHelper extends  HelperBase{
 
@@ -103,9 +105,8 @@ public class AddNewHelper extends  HelperBase{
   public List<AddNewData> list() {
     List<AddNewData> addnews = new ArrayList<AddNewData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
-
     for(WebElement element : elements){
-     // List<WebElement> cells = element.findElements(By.tagName("td"));
+      // List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String middlename = element.getText();
       String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
@@ -119,6 +120,31 @@ public class AddNewHelper extends  HelperBase{
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
+      addnews.add(new AddNewData().withId(id).withFirstname(firstname)
+              .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
+              .withCompany(company).withAddress(address).withMobile(mobile).withEmail(email)
+              .withByear(byear).withGroup(group));
+    }
+    return addnews;
+  }
+
+  public Set<AddNewData> all() {
+    Set<AddNewData> addnews = new HashSet<AddNewData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
+    for(WebElement element : elements){
+      // List<WebElement> cells = element.findElements(By.tagName("td"));
+      String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      String middlename = element.getText();
+      String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+      String nickname = element.getText();
+      String company = element.getText();
+      String address =  element.findElement(By.cssSelector("td:nth-child(4)")).getText();
+      String mobile = element.getText();
+      String email = element.getText();
+      String byear = element.getText();
+      String group = element.getText();
+
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
       addnews.add(new AddNewData().withId(id).withFirstname(firstname)
               .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
@@ -127,4 +153,5 @@ public class AddNewHelper extends  HelperBase{
     }
     return addnews;
   }
+
 }
