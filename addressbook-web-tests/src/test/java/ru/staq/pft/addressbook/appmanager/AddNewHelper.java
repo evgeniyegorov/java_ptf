@@ -1,15 +1,12 @@
 package ru.staq.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.staq.pft.addressbook.model.AddNewData;
+import ru.staq.pft.addressbook.model.AddNews;
 
-import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,9 +52,6 @@ public class AddNewHelper extends  HelperBase{
 
   }
 
-  public void selectAddNew(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-  }
 
   public void selectAddNewById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
@@ -76,6 +70,11 @@ public class AddNewHelper extends  HelperBase{
     wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td[8]/a")).get(index).click();
   }
 
+  public void initAddNewModificationById(int id)
+  {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td[8]/a")).click();
+  }
+
   public void updateAddNew() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
@@ -86,16 +85,10 @@ public class AddNewHelper extends  HelperBase{
     returnToHomePage();
   }
 
-  public void modify(int index, AddNewData addnew) {
-    initAddNewModification(index);
+  public void modify(AddNewData addnew) {
+    initAddNewModificationById(addnew.getId());
     fillAddNewPage(addnew, false);
     updateAddNew();
-  }
-
-  public void delete(int index) {
-    selectAddNew(index);
-    deleteAddNew();
-    deleteOkAddNew();
   }
 
   public void delete(AddNewData addnew) {
@@ -112,34 +105,8 @@ public class AddNewHelper extends  HelperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<AddNewData> list() {
-    List<AddNewData> addnews = new ArrayList<AddNewData>();
-    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
-    for(WebElement element : elements){
-      // List<WebElement> cells = element.findElements(By.tagName("td"));
-      String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      String middlename = element.getText();
-      String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-      String nickname = element.getText();
-      String company = element.getText();
-      String address =  element.findElement(By.cssSelector("td:nth-child(4)")).getText();
-      String mobile = element.getText();
-      String email = element.getText();
-      String byear = element.getText();
-      String group = element.getText();
-
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-
-      addnews.add(new AddNewData().withId(id).withFirstname(firstname)
-              .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
-              .withCompany(company).withAddress(address).withMobile(mobile).withEmail(email)
-              .withByear(byear).withGroup(group));
-    }
-    return addnews;
-  }
-
-  public Set<AddNewData> all() {
-    Set<AddNewData> addnews = new HashSet<AddNewData>();
+  public AddNews all() {
+    AddNews addnews = new AddNews();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
     for(WebElement element : elements){
       // List<WebElement> cells = element.findElements(By.tagName("td"));

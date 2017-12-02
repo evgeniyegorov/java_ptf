@@ -1,18 +1,24 @@
 package ru.staq.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.AddNewData;
+import ru.staq.pft.addressbook.model.AddNews;
 
-import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class AddNewDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditionsAN()  {
-    if(app.addNew().list().size() == 0){
+    if(app.addNew().all().size() == 0){
       app.goTo().addNewPage();
       app.addNew().create(new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
               .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
@@ -24,14 +30,12 @@ public class AddNewDeletionTests extends TestBase {
 
   public void testAddNewDeletion()
   {
-    Set<AddNewData> before = app.addNew().all();
+    AddNews before = app.addNew().all();
     AddNewData deletedAddnew = before.iterator().next();
     app.addNew().delete(deletedAddnew);
-    Set<AddNewData> after = app.addNew().all();
-    Assert.assertEquals(after.size(), before.size() - 1);
-
-    before.remove(deletedAddnew);
-    Assert.assertEquals(before, after);
+    AddNews after = app.addNew().all();
+    assertEquals(after.size(), before.size() - 1);
+    assertThat(after, equalTo(before.without(deletedAddnew)));
   }
 
 }
