@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.AddNewData;
 
 import java.util.List;
+import java.util.Set;
 
 public class AddNewDeletionTests extends TestBase {
 
@@ -23,13 +24,13 @@ public class AddNewDeletionTests extends TestBase {
 
   public void testAddNewDeletion()
   {
-    List<AddNewData> before = app.addNew().list();
-    int index = before.size() -1;
-    app.addNew().delete(index);
-    List<AddNewData> after = app.addNew().list();
+    Set<AddNewData> before = app.addNew().all();
+    AddNewData deletedAddnew = before.iterator().next();
+    app.addNew().delete(deletedAddnew);
+    Set<AddNewData> after = app.addNew().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index);
+    before.remove(deletedAddnew);
     Assert.assertEquals(before, after);
   }
 

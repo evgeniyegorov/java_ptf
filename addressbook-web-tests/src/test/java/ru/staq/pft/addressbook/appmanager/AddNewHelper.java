@@ -59,6 +59,10 @@ public class AddNewHelper extends  HelperBase{
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public void selectAddNewById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
   public void deleteAddNew() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -90,6 +94,12 @@ public class AddNewHelper extends  HelperBase{
 
   public void delete(int index) {
     selectAddNew(index);
+    deleteAddNew();
+    deleteOkAddNew();
+  }
+
+  public void delete(AddNewData addnew) {
+    selectAddNewById(addnew.getId());
     deleteAddNew();
     deleteOkAddNew();
   }
@@ -153,5 +163,6 @@ public class AddNewHelper extends  HelperBase{
     }
     return addnews;
   }
+
 
 }
