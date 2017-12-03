@@ -82,6 +82,7 @@ public class AddNewHelper extends  HelperBase{
   public void create(AddNewData addnew, boolean b) {
     fillAddNewPage(addnew, true);
     submitAddNew();
+    addnewCache = null;
     returnToHomePage();
   }
 
@@ -89,11 +90,13 @@ public class AddNewHelper extends  HelperBase{
     initAddNewModificationById(addnew.getId());
     fillAddNewPage(addnew, false);
     updateAddNew();
+    addnewCache = null;
   }
 
   public void delete(AddNewData addnew) {
     selectAddNewById(addnew.getId());
     deleteAddNew();
+    addnewCache = null;
     deleteOkAddNew();
   }
 
@@ -105,8 +108,13 @@ public class AddNewHelper extends  HelperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
+  private AddNews addnewCache = null;
+
   public AddNews all() {
-    AddNews addnews = new AddNews();
+    if (addnewCache != null) {
+      return new AddNews(addnewCache);
+    }
+    addnewCache = new AddNews();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
     for(WebElement element : elements){
       // List<WebElement> cells = element.findElements(By.tagName("td"));
@@ -123,12 +131,12 @@ public class AddNewHelper extends  HelperBase{
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 
-      addnews.add(new AddNewData().withId(id).withFirstname(firstname)
+      addnewCache.add(new AddNewData().withId(id).withFirstname(firstname)
               .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
               .withCompany(company).withAddress(address).withMobile(mobile).withEmail(email)
               .withByear(byear).withGroup(group));
     }
-    return addnews;
+    return new AddNews(addnewCache);
   }
 
 
