@@ -117,8 +117,10 @@ public class AddNewHelper extends  HelperBase{
       String firstname = cells.get(2).getText();
       String AllMails = cells.get(4).getText();
       String AllPhones = cells.get(5).getText();
+      String address = cells.get(3).getText();
 
       addnewCache.add(new AddNewData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withAddress(address)
               .withAllMails(AllMails)
               .withAllPhones(AllPhones));
     }
@@ -144,10 +146,11 @@ public class AddNewHelper extends  HelperBase{
     String email     = wd.findElement(By.name("email")).getAttribute("value");
     String email2    = wd.findElement(By.name("email2")).getAttribute("value");
     String email3    = wd.findElement(By.name("email3")).getAttribute("value");
+    String address   = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new AddNewData().withId(addnew.getId()).withFirstname(firstname)
             .withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
-            .withEmail(email).withEmail2(email2).withEmail3(email3);
+            .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
   }
 
 

@@ -1,6 +1,5 @@
 package ru.staq.pft.addressbook.tests;
 
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.AddNewData;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AddNewEmailTests extends  TestBase {
+public class AddNewAddressTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditionsAN()  {
@@ -23,17 +22,16 @@ public class AddNewEmailTests extends  TestBase {
     }
   }
 
-
   @Test
-  public void testAddNewEmails() {
+  public void testAddNewAddress() {
     AddNewData addnew = app.addNew().all().iterator().next();
-    AddNewData addnewsInfoFromEditForm = app.addNew().infoFromEditForm(addnew);
+    AddNewData addnewtInfoFromEditForm = app.addNew().infoFromEditForm(addnew);
 
-    assertThat(addnew.getAllMails(), equalTo(mergeEmails(addnewsInfoFromEditForm)));
+    assertThat(addnew.getAddress(), equalTo(mergeAddress(addnewtInfoFromEditForm)));
   }
 
-  private String  mergeEmails(AddNewData addnew) {
-    return Arrays.asList(addnew.getEmail(), addnew.getEmail2(), addnew.getEmail3())
+  private String mergeAddress(AddNewData addnew) {
+    return Arrays.asList(addnew.getAddress())
             .stream().filter((s) -> ! s.equals(""))
             .collect(Collectors.joining("\n"));
   }
