@@ -14,6 +14,7 @@ public class AddNewData {
   private String group;
   private String home;
   private String work;
+  private String allPhones;
 
 
 
@@ -85,6 +86,11 @@ public class AddNewData {
     return this;
   }
 
+  public AddNewData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
   public String getFirstname() {
     return firstname;
   }
@@ -117,9 +123,9 @@ public class AddNewData {
     return home;
   }
 
-  public String getWorkPhone() {
-    return work;
-  }
+  public String getWorkPhone() { return work; }
+
+  public String getAllPhones() { return allPhones; }
 
   public String getEmail() {
     return email;

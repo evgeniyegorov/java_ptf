@@ -127,11 +127,11 @@ public class AddNewHelper extends  HelperBase{
       String byear = element.getText();
       String group = element.getText();*/
 
-      String[] phones = cells.get(5).getText().split("\n");
+      String AllPhones = cells.get(5).getText();
 
 
       addnewCache.add(new AddNewData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+              .withAllPhones(AllPhones));
     }
     return new AddNews(addnewCache);
   }
