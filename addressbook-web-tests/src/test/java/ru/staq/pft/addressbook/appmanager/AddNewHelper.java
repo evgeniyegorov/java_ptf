@@ -5,11 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.staq.pft.addressbook.model.AddNewData;
 import ru.staq.pft.addressbook.model.AddNews;
-
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 public class AddNewHelper extends  HelperBase{
 
@@ -33,7 +30,7 @@ public class AddNewHelper extends  HelperBase{
     type(By.name("nickname"),addNewData.getNickname());
     type(By.name("company"),addNewData.getCompany());
     type(By.name("address"),addNewData.getAddress());
-    type(By.name("mobile"),addNewData.getMobile());
+    type(By.name("mobile"),addNewData.getMobilePhone());
     type(By.name("email"),addNewData.getEmail());
 
     if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[16]")).isSelected()) {
@@ -70,10 +67,7 @@ public class AddNewHelper extends  HelperBase{
     wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr/td[8]/a")).get(index).click();
   }
 
-  public void initAddNewModificationById(int id)
-  {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td[8]/a")).click();
-  }
+
 
   public void updateAddNew() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
@@ -133,11 +127,32 @@ public class AddNewHelper extends  HelperBase{
 
       addnewCache.add(new AddNewData().withId(id).withFirstname(firstname)
               .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
-              .withCompany(company).withAddress(address).withMobile(mobile).withEmail(email)
+              .withCompany(company).withAddress(address).withMobilePhone(mobile).withEmail(email)
               .withByear(byear).withGroup(group));
     }
     return new AddNews(addnewCache);
   }
 
 
+  public AddNewData infoFromEditForm(AddNewData addnew) {
+    initAddNewModificationById(addnew.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname  = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home      = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile    = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work      = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new AddNewData().withId(addnew.getId()).withFirstname(firstname)
+            .withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+  }
+
+  public void initAddNewModificationById(int id)
+  {
+    WebElement chekbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
+    WebElement row = chekbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+
+   // wd.findElement(By.xpath(String.format("//table[@id='maintable']/tbody/tr/td[8]/a", id))).click();
+  }
 }

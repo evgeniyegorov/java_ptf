@@ -12,6 +12,11 @@ public class AddNewData {
   private String email;
   private String byear;
   private String group;
+  private String home;
+  private String work;
+
+
+
 
   public int getId() { return id; }
 
@@ -50,8 +55,18 @@ public class AddNewData {
     return this;
   }
 
-  public AddNewData  withMobile(String mobile) {
+  public AddNewData  withMobilePhone(String mobile) {
     this.mobile = mobile;
+    return this;
+  }
+
+  public AddNewData  withHomePhone(String home) {
+    this.home = home;
+    return this;
+  }
+
+  public AddNewData  withWorkPhone(String work) {
+    this.work = work;
     return this;
   }
 
@@ -94,8 +109,16 @@ public class AddNewData {
     return address;
   }
 
-  public String getMobile() {
+  public String getMobilePhone() {
     return mobile;
+  }
+
+  public String getHomePhone() {
+    return home;
+  }
+
+  public String getWorkPhone() {
+    return work;
   }
 
   public String getEmail() {

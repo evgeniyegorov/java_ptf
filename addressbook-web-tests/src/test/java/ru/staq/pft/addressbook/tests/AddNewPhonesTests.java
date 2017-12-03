@@ -1,16 +1,10 @@
 package ru.staq.pft.addressbook.tests;
 
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.AddNewData;
-import ru.staq.pft.addressbook.model.AddNews;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-
-public class AddNewDeletionTests extends TestBase {
+public class AddNewPhonesTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditionsAN()  {
@@ -23,15 +17,10 @@ public class AddNewDeletionTests extends TestBase {
   }
 
   @Test
+  public void testAddNewPhones() {
+    app.goTo().addNewPage();
+    AddNewData addnew = app.addNew().all().iterator().next();
+    AddNewData addnewtInfoFromEditForm = app.addNew().infoFromEditForm(addnew);
 
-  public void testAddNewDeletion()
-  {
-    AddNews before = app.addNew().all();
-    AddNewData deletedAddnew = before.iterator().next();
-    app.addNew().delete(deletedAddnew);
-    assertThat(app.addNew().count(), equalTo(before.size() - 1));
-    AddNews after = app.addNew().all();
-    assertThat(after, equalTo(before.without(deletedAddnew)));
   }
-
 }

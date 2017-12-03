@@ -22,7 +22,7 @@ public class AddNewModificationTests extends TestBase {
       app.goTo().addNewPage();
       app.addNew().create(new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
               .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
-              .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989"), true);
+              .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989"), true);
     }
   }
 
@@ -35,7 +35,7 @@ public class AddNewModificationTests extends TestBase {
     AddNewData modifiedAddnew = before.iterator().next();
     AddNewData addnew = new AddNewData().withId(modifiedAddnew.getId()).withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
           .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
-          .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
+          .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
     app.addNew().modify(addnew);
     assertThat(app.addNew().count(), equalTo(before.size()));
     AddNews after = app.addNew().all();
