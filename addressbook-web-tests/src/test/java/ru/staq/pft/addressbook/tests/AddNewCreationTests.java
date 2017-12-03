@@ -20,12 +20,23 @@ public class AddNewCreationTests extends TestBase{
             .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
             .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
     app.addNew().create(addnew, true);
+    assertThat(app.addNew().count(), equalTo(before.size() + 1));
     AddNews after = app.addNew().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
-
-
     assertThat(after, equalTo(
             before.withAdded(addnew.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+  }
+
+  @Test
+  public void testBadAddNew() {
+    AddNews before = app.addNew().all();
+    app.goTo().addNewPage();
+    AddNewData addnew = new AddNewData().withFirstname("Evgeniy'").withMiddlename("Aleksandrovich")
+            .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
+            .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
+    app.addNew().create(addnew, true);
+    assertThat(app.addNew().count(), equalTo(before.size()));
+    AddNews after = app.addNew().all();
+    assertThat(after, equalTo(before));
   }
 
 }

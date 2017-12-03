@@ -37,8 +37,8 @@ public class AddNewModificationTests extends TestBase {
           .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
           .withMobile("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
     app.addNew().modify(addnew);
+    assertThat(app.addNew().count(), equalTo(before.size()));
     AddNews after = app.addNew().all();
-    assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedAddnew).withAdded(addnew)));
   }
 }

@@ -33,8 +33,8 @@ public class AddNewDeletionTests extends TestBase {
     AddNews before = app.addNew().all();
     AddNewData deletedAddnew = before.iterator().next();
     app.addNew().delete(deletedAddnew);
+    assertThat(app.addNew().count(), equalTo(before.size() - 1));
     AddNews after = app.addNew().all();
-    assertEquals(after.size(), before.size() - 1);
     assertThat(after, equalTo(before.without(deletedAddnew)));
   }
 
