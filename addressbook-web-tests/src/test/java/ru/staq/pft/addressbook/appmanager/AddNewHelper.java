@@ -109,9 +109,13 @@ public class AddNewHelper extends  HelperBase{
       return new AddNews(addnewCache);
     }
     addnewCache = new AddNews();
-    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
-    for(WebElement element : elements){
-      // List<WebElement> cells = element.findElements(By.tagName("td"));
+    List<WebElement> rows = wd.findElements(By.xpath("//tr[@name='entry']"));  // маожно так еще считать число строк: wd.findElements(By.name("entry"))    By.xpath("//tr[@name='entry']")
+    for(WebElement row : rows){
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      /* List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstname = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
       String middlename = element.getText();
       String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
@@ -121,18 +125,25 @@ public class AddNewHelper extends  HelperBase{
       String mobile = element.getText();
       String email = element.getText();
       String byear = element.getText();
-      String group = element.getText();
+      String group = element.getText();*/
 
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      String[] phones = cells.get(5).getText().split("\n");
 
-      addnewCache.add(new AddNewData().withId(id).withFirstname(firstname)
-              .withMiddlename(middlename).withLastname(lastname).withNickname(nickname)
-              .withCompany(company).withAddress(address).withMobilePhone(mobile).withEmail(email)
-              .withByear(byear).withGroup(group));
+
+      addnewCache.add(new AddNewData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
     }
     return new AddNews(addnewCache);
   }
+  public void initAddNewModificationById(int id)
+  {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
 
+//    wd.findElement(By.xpath(String.format("//table[@id='maintable']/tbody/tr/td[8]/a", id))).click();
+  }
 
   public AddNewData infoFromEditForm(AddNewData addnew) {
     initAddNewModificationById(addnew.getId());
@@ -146,13 +157,5 @@ public class AddNewHelper extends  HelperBase{
             .withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
   }
 
-  public void initAddNewModificationById(int id)
-  {
-    WebElement chekbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
-    WebElement row = chekbox.findElement(By.xpath("./../.."));
-    List<WebElement> cells = row.findElements(By.tagName("td"));
-    cells.get(7).findElement(By.tagName("a")).click();
 
-   // wd.findElement(By.xpath(String.format("//table[@id='maintable']/tbody/tr/td[8]/a", id))).click();
-  }
 }
