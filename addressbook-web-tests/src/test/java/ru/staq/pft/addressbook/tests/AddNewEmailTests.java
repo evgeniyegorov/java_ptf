@@ -1,5 +1,6 @@
 package ru.staq.pft.addressbook.tests;
 
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.AddNewData;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AddNewPhonesTests extends TestBase {
+public class AddNewEmailTests extends  TestBase {
 
   @BeforeMethod
   public void ensurePreconditionsAN()  {
@@ -22,22 +23,18 @@ public class AddNewPhonesTests extends TestBase {
     }
   }
 
+
   @Test
-  public void testAddNewPhones() {
-    //app.goTo().addNewPage();
+  public void testAddNewEmails() {
     AddNewData addnew = app.addNew().all().iterator().next();
     AddNewData addnewtInfoFromEditForm = app.addNew().infoFromEditForm(addnew);
 
-    assertThat(addnew.getAllPhones(), equalTo(mergePhones(addnewtInfoFromEditForm)));
+    assertThat(addnew.getAllMails(), equalTo(mergeEmails(addnewtInfoFromEditForm)));
   }
 
-  private String mergePhones(AddNewData addnew) {
-   return Arrays.asList(addnew.getHomePhone(), addnew.getMobilePhone(), addnew.getWorkPhone())
-            .stream().filter((s) -> ! s.equals("")).map(AddNewPhonesTests::cleaned)
+  private String  mergeEmails(AddNewData addnew) {
+    return Arrays.asList(addnew.getEmail(), addnew.getEmail2(), addnew.getEmail3())
+            .stream().filter((s) -> ! s.equals(""))
             .collect(Collectors.joining("\n"));
-  }
-
-  public static String cleaned(String phone){
-    return phone.replaceAll("\\s", "").replaceAll("[-()]","");
   }
 }

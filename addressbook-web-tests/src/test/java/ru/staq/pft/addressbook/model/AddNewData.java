@@ -10,16 +10,16 @@ public class AddNewData {
   private String address;
   private String mobile;
   private String email;
+  private String email2;
+  private String email3;
   private String byear;
   private String group;
   private String home;
   private String work;
   private String allPhones;
+  private String allMails;
 
 
-
-
-  public int getId() { return id; }
 
   public AddNewData  withId(int id) {
     this.id = id;
@@ -76,6 +76,21 @@ public class AddNewData {
     return this;
   }
 
+  public AddNewData  withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public AddNewData  withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public AddNewData withAllMails(String allMails) {
+    this.allMails = allMails;
+    return this;
+  }
+
   public AddNewData  withByear(String byear) {
     this.byear = byear;
     return this;
@@ -90,6 +105,9 @@ public class AddNewData {
     this.allPhones = allPhones;
     return this;
   }
+
+
+  public int getId() { return id; }
 
   public String getFirstname() {
     return firstname;
@@ -115,9 +133,7 @@ public class AddNewData {
     return address;
   }
 
-  public String getMobilePhone() {
-    return mobile;
-  }
+  public String getMobilePhone() { return mobile; }
 
   public String getHomePhone() {
     return home;
@@ -130,6 +146,16 @@ public class AddNewData {
   public String getEmail() {
     return email;
   }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
+  public String getAllMails() { return allMails; }
 
   public String getByear() {
     return byear;
