@@ -1,5 +1,7 @@
 package ru.staq.pft.addressbook.model;
 
+import java.io.File;
+
 public class AddNewData {
   private int  id = Integer.MAX_VALUE;;
   private String firstname;
@@ -18,8 +20,13 @@ public class AddNewData {
   private String work;
   private String allPhones;
   private String allMails;
+  private File photo;
 
 
+  public AddNewData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
 
   public AddNewData  withId(int id) {
     this.id = id;
@@ -164,6 +171,8 @@ public class AddNewData {
   public String getGroup() {
     return group;
   }
+
+  public File getPhoto() { return photo; }
 
   @Override
   public String toString() {

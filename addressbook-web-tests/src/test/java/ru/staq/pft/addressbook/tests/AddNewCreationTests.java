@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.AddNewData;
 import ru.staq.pft.addressbook.model.AddNews;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -16,9 +18,11 @@ public class AddNewCreationTests extends TestBase{
 
     AddNews before = app.addNew().all();
     app.goTo().addNewPage();
+    File photo = new File("src/test/resources/stru.png");
     AddNewData addnew = new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
             .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
-            .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989");
+            .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989")
+            .withGroup("test1").withPhoto(photo);
     app.addNew().create(addnew, true);
     assertThat(app.addNew().count(), equalTo(before.size() + 1));
     AddNews after = app.addNew().all();
@@ -38,5 +42,5 @@ public class AddNewCreationTests extends TestBase{
     AddNews after = app.addNew().all();
     assertThat(after, equalTo(before));
   }
-
+  
 }

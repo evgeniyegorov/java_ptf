@@ -40,6 +40,7 @@ public class AddNewHelper extends  HelperBase{
       click(By.xpath("//div[@id='content']/form/select[2]//option[3]"));
     }
     type(By.name("byear"),addNewData.getByear());
+    atach(By.name("photo"), addNewData.getPhoto());
 
    /* if (creation){
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(addNewData.getGroup());
