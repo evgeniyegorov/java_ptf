@@ -6,7 +6,10 @@ import ru.staq.pft.addressbook.model.AddNewData;
 import ru.staq.pft.addressbook.model.AddNews;
 import ru.staq.pft.addressbook.model.GroupDate;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,20 +21,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class AddNewCreationTests extends TestBase{
 
   @DataProvider
-  public Iterator<Object[]> validAddNews() {
+  public Iterator<Object[]> validAddNews() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
-    list.add(new Object[] {new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
-            .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
-            .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989")
-            .withGroup("test1")});
-    list.add(new Object[] {new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
-            .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
-            .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989")
-            .withGroup("test1")});
-    list.add(new Object[] {new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
-            .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
-            .withMobilePhone("8-968-982-38-07").withEmail("egorzhekov@gmail.com").withByear("1989")
-            .withGroup("test1")});
+    BufferedReader reader = new BufferedReader( new FileReader(new File("src/test/resources/addnews.csv")));
+    String line = reader.readLine();
+    while(line != null){
+      String[] split = line.split(";");
+      list.add(new Object[] {new AddNewData().withFirstname(split[0]).withMiddlename(split[1])
+              .withLastname(split[2]).withNickname(split[3]).withCompany(split[4]).withAddress(split[5])
+              .withMobilePhone(split[6]).withEmail(split[7]).withByear(split[8])
+              .withGroup(split[9])});
+      line = reader.readLine();
+    }
     return list.iterator();
   }
 
