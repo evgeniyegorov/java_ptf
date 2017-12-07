@@ -26,31 +26,33 @@ public class AddNewCreationTests extends TestBase{
 
   @DataProvider
   public Iterator<Object[]> validAddNewsFromXml() throws IOException {
-    BufferedReader reader = new BufferedReader( new FileReader(new File("src/test/resources/addnews.xml")));
-    String xml = "";
-    String line = reader.readLine();
-    while(line != null){
-      xml += line;
-      line = reader.readLine();
+    try(BufferedReader reader = new BufferedReader( new FileReader(new File("src/test/resources/addnews.xml")))){
+      String xml = "";
+      String line = reader.readLine();
+      while(line != null){
+        xml += line;
+        line = reader.readLine();
+      }
+      XStream xstream = new XStream();
+      xstream.processAnnotations(AddNewData.class);
+      List<AddNewData> addnews  = (List<AddNewData>) xstream.fromXML(xml);
+      return addnews.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
-    XStream xstream = new XStream();
-    xstream.processAnnotations(AddNewData.class);
-    List<AddNewData> addnews  = (List<AddNewData>) xstream.fromXML(xml);
-    return addnews.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
 
   @DataProvider
   public Iterator<Object[]> validAddNewsFromJson() throws IOException {
-    BufferedReader reader = new BufferedReader( new FileReader(new File("src/test/resources/addnews.json")));
-    String json = "";
-    String line = reader.readLine();
-    while(line != null){
-      json += line;
-      line = reader.readLine();
+    try(BufferedReader reader = new BufferedReader( new FileReader(new File("src/test/resources/addnews.json")))){
+      String json = "";
+      String line = reader.readLine();
+      while(line != null){
+        json += line;
+        line = reader.readLine();
+      }
+      Gson gson = new Gson();
+      List<AddNewData> addnews  = gson.fromJson(json, new TypeToken<List<AddNewData>>(){}.getType());  // List<AddNewData>.class
+      return addnews.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
-   Gson gson = new Gson();
-    List<AddNewData> addnews  = gson.fromJson(json, new TypeToken<List<AddNewData>>(){}.getType());  // List<AddNewData>.class
-    return addnews.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
 
 

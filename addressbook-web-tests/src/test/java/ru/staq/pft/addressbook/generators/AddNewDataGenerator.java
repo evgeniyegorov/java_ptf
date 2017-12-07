@@ -55,23 +55,23 @@ public class AddNewDataGenerator {
   private void saveAsJson(List<AddNewData> addnews, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(addnews);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try(Writer writer = new FileWriter(file)){
+      writer.write(json);
+    }
 }
 
   private void saveAsXml(List<AddNewData> addnews, File file) throws IOException {
     XStream xstream = new XStream();
     xstream.processAnnotations(AddNewData.class);
     String xml = xstream.toXML(addnews);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try(Writer writer = new FileWriter(file)){
+      writer.write(xml);
+    }
   }
 
   private void saveAsCsv(List<AddNewData> addnews, File file) throws IOException {
-    Writer writer = new FileWriter(file);
-    for(AddNewData addnew : addnews){
+    try(Writer writer = new FileWriter(file)){
+    for(AddNewData addnew : addnews) {
       writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n"
               , addnew.getFirstname()
               , addnew.getMiddlename()
@@ -83,8 +83,8 @@ public class AddNewDataGenerator {
               , addnew.getEmail()
               , addnew.getByear()
               , addnew.getGroup()));
+       }
     }
-    writer.close();
   }
 
   private List<AddNewData> generateAddNews(int count) {
