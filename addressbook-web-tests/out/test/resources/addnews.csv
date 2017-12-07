@@ -1,3 +1,132 @@
-Evgeniy 0;Aleksandrovich 0;Egorov 0;egorzhekov 0;DPD 0;Mosqow 0;8-968-982-38-07 0;egorzhekov@gmail.com 0;1989 0;test1 0
-Evgeniy 1;Aleksandrovich 1;Egorov 1;egorzhekov 1;DPD 1;Mosqow 1;8-968-982-38-07 1;egorzhekov@gmail.com 1;1989 1;test1 1
-Evgeniy 2;Aleksandrovich 2;Egorov 2;egorzhekov 2;DPD 2;Mosqow 2;8-968-982-38-07 2;egorzhekov@gmail.com 2;1989 2;test1 2
+<list>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 0</firstname>
+    <middlename>Aleksandrovich 0</middlename>
+    <lastname>Egorov 0</lastname>
+    <nickname>egorzhekov 0</nickname>
+    <company>DPD 0</company>
+    <address>Mosqow 0</address>
+    <mobile>8-968-982-38-07 0</mobile>
+    <email>egorzhekov@gmail.com 0</email>
+    <byear>1989 0</byear>
+    <group>test1 0</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 1</firstname>
+    <middlename>Aleksandrovich 1</middlename>
+    <lastname>Egorov 1</lastname>
+    <nickname>egorzhekov 1</nickname>
+    <company>DPD 1</company>
+    <address>Mosqow 1</address>
+    <mobile>8-968-982-38-07 1</mobile>
+    <email>egorzhekov@gmail.com 1</email>
+    <byear>1989 1</byear>
+    <group>test1 1</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 2</firstname>
+    <middlename>Aleksandrovich 2</middlename>
+    <lastname>Egorov 2</lastname>
+    <nickname>egorzhekov 2</nickname>
+    <company>DPD 2</company>
+    <address>Mosqow 2</address>
+    <mobile>8-968-982-38-07 2</mobile>
+    <email>egorzhekov@gmail.com 2</email>
+    <byear>1989 2</byear>
+    <group>test1 2</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 3</firstname>
+    <middlename>Aleksandrovich 3</middlename>
+    <lastname>Egorov 3</lastname>
+    <nickname>egorzhekov 3</nickname>
+    <company>DPD 3</company>
+    <address>Mosqow 3</address>
+    <mobile>8-968-982-38-07 3</mobile>
+    <email>egorzhekov@gmail.com 3</email>
+    <byear>1989 3</byear>
+    <group>test1 3</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 4</firstname>
+    <middlename>Aleksandrovich 4</middlename>
+    <lastname>Egorov 4</lastname>
+    <nickname>egorzhekov 4</nickname>
+    <company>DPD 4</company>
+    <address>Mosqow 4</address>
+    <mobile>8-968-982-38-07 4</mobile>
+    <email>egorzhekov@gmail.com 4</email>
+    <byear>1989 4</byear>
+    <group>test1 4</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 5</firstname>
+    <middlename>Aleksandrovich 5</middlename>
+    <lastname>Egorov 5</lastname>
+    <nickname>egorzhekov 5</nickname>
+    <company>DPD 5</company>
+    <address>Mosqow 5</address>
+    <mobile>8-968-982-38-07 5</mobile>
+    <email>egorzhekov@gmail.com 5</email>
+    <byear>1989 5</byear>
+    <group>test1 5</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 6</firstname>
+    <middlename>Aleksandrovich 6</middlename>
+    <lastname>Egorov 6</lastname>
+    <nickname>egorzhekov 6</nickname>
+    <company>DPD 6</company>
+    <address>Mosqow 6</address>
+    <mobile>8-968-982-38-07 6</mobile>
+    <email>egorzhekov@gmail.com 6</email>
+    <byear>1989 6</byear>
+    <group>test1 6</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 7</firstname>
+    <middlename>Aleksandrovich 7</middlename>
+    <lastname>Egorov 7</lastname>
+    <nickname>egorzhekov 7</nickname>
+    <company>DPD 7</company>
+    <address>Mosqow 7</address>
+    <mobile>8-968-982-38-07 7</mobile>
+    <email>egorzhekov@gmail.com 7</email>
+    <byear>1989 7</byear>
+    <group>test1 7</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 8</firstname>
+    <middlename>Aleksandrovich 8</middlename>
+    <lastname>Egorov 8</lastname>
+    <nickname>egorzhekov 8</nickname>
+    <company>DPD 8</company>
+    <address>Mosqow 8</address>
+    <mobile>8-968-982-38-07 8</mobile>
+    <email>egorzhekov@gmail.com 8</email>
+    <byear>1989 8</byear>
+    <group>test1 8</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+  <ru.staq.pft.addressbook.model.AddNewData>
+    <id>2147483647</id>
+    <firstname>Evgeniy 9</firstname>
+    <middlename>Aleksandrovich 9</middlename>
+    <lastname>Egorov 9</lastname>
+    <nickname>egorzhekov 9</nickname>
+    <company>DPD 9</company>
+    <address>Mosqow 9</address>
+    <mobile>8-968-982-38-07 9</mobile>
+    <email>egorzhekov@gmail.com 9</email>
+    <byear>1989 9</byear>
+    <group>test1 9</group>
+  </ru.staq.pft.addressbook.model.AddNewData>
+</list>
