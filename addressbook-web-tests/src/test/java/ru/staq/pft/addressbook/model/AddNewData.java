@@ -1,5 +1,6 @@
 package ru.staq.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -9,22 +10,39 @@ import java.io.File;
 public class AddNewData {
   @XStreamOmitField
   private int  id = Integer.MAX_VALUE;;
+  @Expose
   private String firstname;
+  @Expose
   private String middlename;
+  @Expose
   private String lastname;
+  @Expose
   private String nickname;
+  @Expose
   private String company;
+  @Expose
   private String address;
+  @Expose
   private String mobile;
+  @Expose
   private String email;
+  @Expose
   private String email2;
+  @Expose
   private String email3;
+  @Expose
   private String byear;
+  @Expose
   private String group;
+  @Expose
   private String home;
+  @Expose
   private String work;
+  @Expose
   private String allPhones;
+  @Expose
   private String allMails;
+  @Expose
   private File photo;
 
 

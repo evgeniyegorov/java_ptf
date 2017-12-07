@@ -1,0 +1,38 @@
+[
+  {
+    "firstname": "Evgeniy 0",
+    "middlename": "Aleksandrovich 0",
+    "lastname": "Egorov 0",
+    "nickname": "egorzhekov 0",
+    "company": "DPD 0",
+    "address": "Mosqow 0",
+    "mobile": "8-968-982-38-07 0",
+    "email": "egorzhekov@gmail.com 0",
+    "byear": "1989 0",
+    "group": "test1 0"
+  },
+  {
+    "firstname": "Evgeniy 1",
+    "middlename": "Aleksandrovich 1",
+    "lastname": "Egorov 1",
+    "nickname": "egorzhekov 1",
+    "company": "DPD 1",
+    "address": "Mosqow 1",
+    "mobile": "8-968-982-38-07 1",
+    "email": "egorzhekov@gmail.com 1",
+    "byear": "1989 1",
+    "group": "test1 1"
+  },
+  {
+    "firstname": "Evgeniy 2",
+    "middlename": "Aleksandrovich 2",
+    "lastname": "Egorov 2",
+    "nickname": "egorzhekov 2",
+    "company": "DPD 2",
+    "address": "Mosqow 2",
+    "mobile": "8-968-982-38-07 2",
+    "email": "egorzhekov@gmail.com 2",
+    "byear": "1989 2",
+    "group": "test1 2"
+  }
+]
