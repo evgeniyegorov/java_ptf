@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="AddNews">
+        <classes>
+            <class name="ru.staq.pft.addressbook.tests.AddNewCreationTests"/>
+            <class name="ru.staq.pft.addressbook.tests.AddNewDeletionTests"/>
+            <class name="ru.staq.pft.addressbook.tests.AddNewModificationTests"/>
+        </classes>
+    </test>
+</suite>
