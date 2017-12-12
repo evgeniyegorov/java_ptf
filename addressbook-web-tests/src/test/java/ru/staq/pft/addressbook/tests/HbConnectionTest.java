@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.staq.pft.addressbook.model.AddNewData;
 import ru.staq.pft.addressbook.model.GroupDate;
 
 import java.util.List;
@@ -36,9 +37,9 @@ public class HbConnectionTest {
   public void testHbConnectin(){
     Session session =  sessionFactory.openSession();
     session.beginTransaction();
-    List<GroupDate> result = session.createQuery( "from GroupDate" ).list();
-    for (GroupDate group : result) {
-      System.out.println(group);
+    List<AddNewData> result = session.createQuery( "from AddNewData where deprecated = '0000-00-00'" ).list();
+    for (AddNewData addnew : result) {
+      System.out.println(addnew);
     }
     session.getTransaction().commit();
     session.close();
