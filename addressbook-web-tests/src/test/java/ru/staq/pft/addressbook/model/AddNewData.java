@@ -90,9 +90,13 @@ public class AddNewData {
   private String allMails;
 
   @Expose
+  @Transient
+  private String photo;
+
+ /* @Expose
   @Column (name = "photo")
   @Type(type = "text")
-  private String photo;
+  private String photo; */
 
 
   public AddNewData withPhoto(File photo) {
@@ -244,7 +248,7 @@ public class AddNewData {
     return group;
   }
 
-  public File getPhoto() { return new File(photo); }
+//  public File getPhoto() { return new File(photo); }
 
   @Override
   public String toString() {
