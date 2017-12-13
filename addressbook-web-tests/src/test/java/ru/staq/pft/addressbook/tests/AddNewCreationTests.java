@@ -70,6 +70,7 @@ public class AddNewCreationTests extends TestBase{
     AddNews after = app.db().addnews();
     assertThat(after, equalTo(
             before.withAdded(addnew.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    verifyAddNewListInUI();
   }
 
   @Test
@@ -83,6 +84,7 @@ public class AddNewCreationTests extends TestBase{
     assertThat(app.addNew().count(), equalTo(before.size()));
     AddNews after = app.db().addnews();
     assertThat(after, equalTo(before));
+    verifyAddNewListInUI();
   }
   
 }

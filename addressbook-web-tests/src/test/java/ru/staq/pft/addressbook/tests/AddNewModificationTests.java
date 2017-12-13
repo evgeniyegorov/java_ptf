@@ -32,5 +32,6 @@ public class AddNewModificationTests extends TestBase {
     assertThat(app.addNew().count(), equalTo(before.size()));
     AddNews after = app.db().addnews();
     assertThat(after, equalTo(before.without(modifiedAddnew).withAdded(addnew)));
+    verifyAddNewListInUI();
   }
 }
