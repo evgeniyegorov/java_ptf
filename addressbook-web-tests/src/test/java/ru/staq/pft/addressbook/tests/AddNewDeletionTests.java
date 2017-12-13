@@ -14,7 +14,7 @@ public class AddNewDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditionsAN()  {
-    if(app.addNew().all().size() == 0){
+    if(app.db().addnews().size() == 0){
       app.goTo().addNewPage();
       app.addNew().create(new AddNewData().withFirstname("Evgeniy").withMiddlename("Aleksandrovich")
               .withLastname("Egorov").withNickname("egorzhekov").withCompany("DPD").withAddress("Mosqow")
@@ -26,11 +26,11 @@ public class AddNewDeletionTests extends TestBase {
 
   public void testAddNewDeletion()
   {
-    AddNews before = app.addNew().all();
+    AddNews before = app.db().addnews();
     AddNewData deletedAddnew = before.iterator().next();
     app.addNew().delete(deletedAddnew);
     assertThat(app.addNew().count(), equalTo(before.size() - 1));
-    AddNews after = app.addNew().all();
+    AddNews after = app.db().addnews();
     assertThat(after, equalTo(before.without(deletedAddnew)));
   }
 
