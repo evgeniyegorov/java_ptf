@@ -81,8 +81,8 @@ public class AddNewDataGenerator {
               , addnew.getAddress()
               , addnew.getMobilePhone()
               , addnew.getEmail()
-              , addnew.getByear()
-              , addnew.getGroup()));
+              , addnew.getByear()));
+            //  , addnew.getGroup()));
        }
     }
   }
@@ -99,8 +99,8 @@ public class AddNewDataGenerator {
               .withAddress(String.format("Mosqow %s", i))
               .withMobilePhone(String.format("8-968-982-38-07 %s", i))
               .withEmail(String.format("egorzhekov@gmail.com %s", i))
-              .withByear(String.format("1989 %s", i))
-              .withGroup(String.format("test1 %s", i)));
+              .withByear(String.format("1989 %s", i)));
+              //.withGroup(String.format("test1 %s", i)));
     }
     return addnews;
   }

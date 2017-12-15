@@ -34,14 +34,17 @@ public class HbConnectionTest {
   }
 
   @Test
-  public void testHbConnectin(){
+  public void testHbConnection(){
     Session session =  sessionFactory.openSession();
     session.beginTransaction();
     List<AddNewData> result = session.createQuery( "from AddNewData where deprecated = '0000-00-00'" ).list();
-    for (AddNewData addnew : result) {
-      System.out.println(addnew);
-    }
+
     session.getTransaction().commit();
     session.close();
+
+    for (AddNewData addnew : result) {
+      System.out.println(addnew);
+      System.out.println(addnew.getGroups());
+    }
   }
 }

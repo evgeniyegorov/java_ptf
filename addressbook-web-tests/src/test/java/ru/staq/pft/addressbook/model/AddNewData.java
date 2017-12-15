@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("addnew")
 @Entity
@@ -68,10 +70,6 @@ public class AddNewData {
   private String byear;
 
   @Expose
-  @Transient
-  private String group;
-
-  @Expose
   @Column (name = "home")
   @Type(type = "text")
   private String home;
@@ -93,10 +91,11 @@ public class AddNewData {
   @Transient
   private String photo;
 
- /* @Expose
-  @Column (name = "photo")
-  @Type(type = "text")
-  private String photo; */
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"),
+          inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupDate> groups = new HashSet<GroupDate>();
 
 
   public AddNewData withPhoto(File photo) {
@@ -179,10 +178,6 @@ public class AddNewData {
     return this;
   }
 
-  public AddNewData  withGroup(String group) {
-    this.group = group;
-    return this;
-  }
 
   public AddNewData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
@@ -244,8 +239,8 @@ public class AddNewData {
     return byear;
   }
 
-  public String getGroup() {
-    return group;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
 //  public File getPhoto() { return new File(photo); }
@@ -276,7 +271,7 @@ public class AddNewData {
     if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
     if (email != null ? !email.equals(that.email) : that.email != null) return false;
     if (byear != null ? !byear.equals(that.byear) : that.byear != null) return false;
-    return group != null ? group.equals(that.group) : that.group == null;
+    return groups != null ? groups.equals(that.groups) : that.groups == null;
   }
 
   @Override
@@ -291,7 +286,7 @@ public class AddNewData {
     result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
     result = 31 * result + (email != null ? email.hashCode() : 0);
     result = 31 * result + (byear != null ? byear.hashCode() : 0);
-    result = 31 * result + (group != null ? group.hashCode() : 0);
+    result = 31 * result + (groups != null ? groups.hashCode() : 0);
     return result;
   }
 }
