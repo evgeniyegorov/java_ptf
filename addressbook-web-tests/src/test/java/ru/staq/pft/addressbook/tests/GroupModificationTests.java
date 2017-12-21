@@ -1,8 +1,5 @@
 package ru.staq.pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.staq.pft.addressbook.model.GroupDate;
@@ -10,8 +7,6 @@ import ru.staq.pft.addressbook.model.Groups;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
-
 
 public class GroupModificationTests extends TestBase {
 
