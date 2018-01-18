@@ -1,8 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.client.LaxRedirectStrategy;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -4,13 +4,11 @@ import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
-import ru.stqa.ptf.mantis.model.MailMessage;
-
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+import ru.stqa.pft.mantis.model.MailMessage;
 
 
 
