@@ -12,12 +12,15 @@ import java.util.stream.Collectors;
 
 public class JamesHelper {
   private ApplicationManager app;
+
   private TelnetClient telnet;
   private InputStream in;
   private PrintStream out;
+
   private javax.mail.Session mailSession;
   private Store store;
   private String mailserver;
+
   public JamesHelper(ApplicationManager app) {
     this.app = app;
     telnet = new TelnetClient();
@@ -51,6 +54,7 @@ public class JamesHelper {
     int port = Integer.parseInt(app.getProperty("mailserver.port"));
     String login = app.getProperty("mailserver.adminlogin");
     String password = app.getProperty("mailserver.adminpassword");
+
     try {
       telnet.connect(mailserver, port);
       in = telnet.getInputStream();
